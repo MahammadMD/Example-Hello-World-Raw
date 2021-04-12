@@ -6,14 +6,19 @@
 //
 
 import XCTest
+@testable import HelloWorld
 
 class Tests: XCTestCase {
 
+    var helloWorldModule : HelloWorldLabel!
+    
     override func setUpWithError() throws {
+        helloWorldModule = HelloWorldLabel(parentView: UIView(), text: "Hey")
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
+        helloWorldModule = nil
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
@@ -27,6 +32,13 @@ class Tests: XCTestCase {
         measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testEneterdText() {
+      // 1. given
+        helloWorldModule.setDesign("Hello World")
+        
+        XCTAssertEqual(helloWorldModule.text, "Hello World", "text is wrong")
     }
 
 }
